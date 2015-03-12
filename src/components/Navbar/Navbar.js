@@ -1,28 +1,26 @@
-/*
- * React.js Starter Kit
- * Copyright (c) 2014 Konstantin Tarkus (@koistya), KriaSoft LLC.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
-'use strict';
+'use strict'
 
 import React from 'react';
+import { PureRenderMixin } from 'react/addons';
+import { Link } from 'react-router';
+import { Toolbar, ToolbarGroup, FlatButton } from 'material-ui';
 
 export default React.createClass({
+  mixins: [PureRenderMixin],  //agb immutable?
 
-  render() {
+  render: function () {
     return (
-      <div className="navbar-top" role="navigation">
-        <div className="container">
-          <a className="navbar-brand row" href="/">
-            <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
-            <span>React.js Starter Kit</span>
-          </a>
-        </div>
-      </div>
+      <Toolbar>
+        <ToolbarGroup key={0} float='left'>
+          <FlatButton label='primary'><Link to='home'></Link></FlatButton>
+          <FlatButton label='primary'><Link to='Playlists'></Link></FlatButton>
+          <FlatButton label='primary'><Link to='Shows'></Link></FlatButton>
+        </ToolbarGroup>
+        <ToolbarGroup key={1} float='right'>
+          <FlatButton label='primary'><Link to='about'>About</Link></FlatButton>
+          <FlatButton label='primary'><Link to='contact'>Contact</Link></FlatButton>
+        </ToolbarGroup>
+      </Toolbar>
     );
-  }
-
+  },
 });
