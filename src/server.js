@@ -13,11 +13,11 @@ import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import React from 'react';
-// import Dispatcher from './core/Dispatcher';
-// import ActionTypes from './constants/ActionTypes';
-import App from './components/App';
-//import AppStore from './stores/AppStore';
 
+// var debug = require('debug')('app');
+//import router from './routes/router';
+//var router = require('./routes/router');
+// debug('hey')
 var server = express();
 
 server.set('port', (process.env.PORT || 5000));
@@ -32,25 +32,27 @@ server.use(express.static(path.join(__dirname)));
 //   res.send(page);
 // });
 
+// Load library, make sure it's freshly instantiated
+// var getInstance = function() {
+//   require.uncache("../../build/js/app");
+//   return new require("../../build/js/app");
+// };
+
 //
 // Server-side rendering
 // -----------------------------------------------------------------------------
 
 // The top-level React component + HTML template for it
-var App = React.createFactory(App);
+// var App = React.createFactory(require('./components/App'));
 var templateFile = path.join(__dirname, 'templates/index.html');
 var template = _.template(fs.readFileSync(templateFile, 'utf8'));
 
+// see react-spa: routes/isomorphic.js->controllers/isomorphic.js->app.js->router.js
 server.get('*', function(req, res) {
-  var data = {description: ''};
-  // // var app = new App({
-  // //   path: req.path,
-  // //   onSetTitle: function(title) { data.title = title; },
-  // //   onSetMeta: function(name, content) { data[name] = content; },
-  // //   onPageNotFound: function() { res.status(404); }
-  // // });
-// data.body = '';
-  data.body = React.renderToString(new App());
+  var data = {description: 'Server version', title: 'Testing Server'};
+  // data.body = getInstance().renderToString(req.path);
+  // // data.body = React.renderToString(new App());
+  data.body = '';
   var html = template(data);
   res.send(html);
 });

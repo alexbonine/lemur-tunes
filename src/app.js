@@ -10,15 +10,29 @@
 
 import 'babel/polyfill';
 
-import React from 'react';
+//import React from 'react';
 // import emptyFunction from 'react/lib/emptyFunction';
-import App from './components/App';
-import Router from './routes/router';
-import routes from 
+//import App from './components/App';
+import router from './routes/router';
 // import Dispatcher from './core/Dispatcher';
 // import AppActions from './actions/AppActions';
 // import ActionTypes from './constants/ActionTypes';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+module.exports = {
+  init: function() {
+    console.log('init app.js');
+  },
+  renderToDom: function () {
+    injectTapEventPlugin();  // required by material UI until React v1
+    router.renderToDom();
+  },
+  renderToString: function (path) {
+    debugger;
+    var body = router.renderToString(path || '/');
+    return body;
+  }
+};
 
 // var path = decodeURI(window.location.pathname);
 // var setMetaTag = (name, content) => {
@@ -55,11 +69,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
   //   }
   // });
 
-  Router.run((Handler) => {
-    React.render(<Handler/>, document.body);
-  });
-
-  injectTapEventPlugin();  // required by material UI until React v1
+  // Router.run((Handler) => {
+  //   React.render(<Handler/>, document.getElementById('root'));
+  // });
 // }
 
 // Run the application when both DOM is ready

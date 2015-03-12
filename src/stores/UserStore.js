@@ -48,7 +48,7 @@ var UserStore = assign({}, EventEmitter.prototype, {
    *
    * @param {function} callback Callback function.
    */
-  onChange(callback) {
+  addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   },
 
@@ -57,7 +57,7 @@ var UserStore = assign({}, EventEmitter.prototype, {
    *
    * @param {function} callback Callback function.
    */
-  off(callback) {
+  removeChangeListener(callback) {
     this.off(CHANGE_EVENT, callback);
   }
 

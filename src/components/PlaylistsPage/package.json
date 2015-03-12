@@ -1,0 +1,6 @@
+{
+  "name": "PlaylistsPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PlaylistsPage.js"
+}
