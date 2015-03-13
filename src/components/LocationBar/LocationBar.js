@@ -4,7 +4,7 @@ import React from 'react';
 import { PureRenderMixin } from 'react/addons';
 import UserStore from '../../stores/UserStore';
 import LemurTunesActions from '../../actions/LemurTunesActions';
-//import { Toolbar, ToolbarGroup, DropdownMenu } from 'material-ui';
+import { Toolbar, ToolbarGroup, DropdownMenu } from 'material-ui';
 
 export default React.createClass({
   mixins: [PureRenderMixin],  //agb immutable?
@@ -36,11 +36,11 @@ export default React.createClass({
 
   render: function () {
     return (
-      // <Toolbar>
-      //   <ToolbarGroup key={0} float='right'>
-          {/*<DropdownMenu menuItems={this.props.locationOptions} onChange={this.handleLocationChange} />*/}
-      //   </ToolbarGroup>
-      // </Toolbar>
+    // <Toolbar>
+    //   <ToolbarGroup key={0} float='right'>
+    //     <DropdownMenu menuItems={this.props.locationOptions} onChange={this.handleLocationChange} />*/}
+    //   </ToolbarGroup>
+    // </Toolbar>
       <h2>LocationBar</h2>
     );
   },
