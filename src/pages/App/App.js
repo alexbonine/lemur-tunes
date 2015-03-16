@@ -3,8 +3,8 @@
 // import './App.less';
 
 import React from 'react';
-import Navbar from '../Navbar';
-import LocationBar from '../LocationBar';
+import Navbar from '../../components/Navbar';
+import LocationBar from '../../components/LocationBar';
 import { RouteHandler, Link } from 'react-router';
 
 export default React.createClass({

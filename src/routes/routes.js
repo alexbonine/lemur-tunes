@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { Route, DefaultRoute, NotFoundRoute } from 'react-router';
-import App from '../components/App';
-import HomePage from '../components/HomePage';
-import PlaylistsPage from '../components/PlaylistsPage';
-import CalendarPage from '../components/CalendarPage';
-import AboutPage from '../components/AboutPage';
-import ContactPage from '../components/ContactPage';
-import NotFoundPage from '../components/NotFoundPage';
+import App from '../pages/App';
+import HomePage from '../pages/HomePage';
+import PlaylistsPage from '../pages/PlaylistsPage';
+import CalendarPage from '../pages/CalendarPage';
+import AboutPage from '../pages/AboutPage';
+import ContactPage from '../pages/ContactPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 module.exports = (
   <Route name='home' path='/' handler={App}>

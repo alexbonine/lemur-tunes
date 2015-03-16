@@ -12,7 +12,21 @@ module.exports = {
       actionType: ActionTypes.CHANGE_LOCATION,
       location: location
     })
-  }
+  },
+
+  setPlaylists: function () {
+    Dispatcher.handleServerAction({
+      actionType: ActionTypes.PLAYLISTS_SET,
+      playlists: playlists
+    })
+  },
+
+  setShows: function () {
+    Dispatcher.handleServerAction({
+      actionType: ActionTypes.SHOWS_SET,
+      shows: shows
+    })
+  },
 
   // navigateTo(path) {
   //   if (ExecutionEnvironment.canUseDOM) {

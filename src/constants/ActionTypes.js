@@ -15,7 +15,9 @@ var ActionTypes = keyMirror({
   // LOAD_PAGE: null,
   // LOAD_PAGE_SUCCESS: null,
   // LOAD_PAGE_ERROR: null,
-  CHANGE_LOCATION: null
+  CHANGE_LOCATION: null,
+  PLAYLISTS_SET: null,
+  SHOWS_SET: null
 
 });
 

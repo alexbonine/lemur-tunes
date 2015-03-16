@@ -48,7 +48,6 @@ export default React.createClass({
   },
 
   _onChange: function () {
-    debugger
     this.setState(this.getStateFromStore());
   }
 });
