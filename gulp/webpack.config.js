@@ -29,7 +29,8 @@ var config = {
   output: {
     path: './build/',
     publicPath: './build/',
-    sourcePrefix: '  '
+    sourcePrefix: '  ',
+    library: 'lemurtunes'
   },
 
   cache: DEBUG,

@@ -11,7 +11,7 @@ gulp.task('serve', ['watch'], function(cb) {
 
   var server = (function startup() {
     var child = cp.fork(config.serve.child, {
-      env: assign({NODE_ENV: 'development'}, process.env)  //path
+      env: assign({NODE_ENV: 'development'}, process.env)
     });
     child.once('message', function(message) {
       if (message.match(/^online$/)) {

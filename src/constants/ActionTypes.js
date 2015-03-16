@@ -12,9 +12,9 @@ import keyMirror from 'react/lib/keyMirror';
 
 var ActionTypes = keyMirror({
 
-  LOAD_PAGE: null,
-  LOAD_PAGE_SUCCESS: null,
-  LOAD_PAGE_ERROR: null,
+  // LOAD_PAGE: null,
+  // LOAD_PAGE_SUCCESS: null,
+  // LOAD_PAGE_ERROR: null,
   CHANGE_LOCATION: null
 
 });

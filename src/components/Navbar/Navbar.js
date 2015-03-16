@@ -1,28 +1,30 @@
-/*
- * React.js Starter Kit
- * Copyright (c) 2014 Konstantin Tarkus (@koistya), KriaSoft LLC.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
+'use strict'
 
-'use strict';
+import './Navbar.less';
 
 import React from 'react';
+import { PureRenderMixin } from 'react/addons';
+import { Link } from 'react-router';
+import { Toolbar, ToolbarGroup, FlatButton } from 'material-ui';
 
 export default React.createClass({
+  mixins: [PureRenderMixin],  //agb immutable?
 
-  render() {
+  render: function () {
     return (
-      <div className="navbar-top" role="navigation">
-        <div className="container">
-          <a className="navbar-brand row" href="/">
-            <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
-            <span>React.js Starter Kit</span>
-          </a>
-        </div>
+      <div  className='Navbar'>
+        <Toolbar>
+          <ToolbarGroup key={0} float='left'>
+            <Link to='home'><FlatButton label='Home' /></Link>
+            <Link to='playlists'><FlatButton label='Playlists' /></Link>
+            <Link to='calendar'><FlatButton label='Calendar' /></Link>
+          </ToolbarGroup>
+          <ToolbarGroup key={1} float='right'>
+            <Link to='about'><FlatButton label='About' /></Link>
+            <Link to='contact'><FlatButton label='Contact' /></Link>
+          </ToolbarGroup>
+        </Toolbar>
       </div>
     );
   }
-
 });

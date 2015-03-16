@@ -32,7 +32,8 @@ module.exports = {
     src: src + '/styles/**/*.{css,less}',
     srcFiles: [
       src + '/styles/bootstrap.less',
-      src + '/styles/material-ui.less'
+      src + '/styles/material-ui.less',
+      src + '/styles/custom.less'
     ],
     dest: dest + '/css'
   },
