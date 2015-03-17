@@ -20,7 +20,7 @@ export default React.createClass({
 
   render: function () {
     var location = this.props.location,
-      filteredShows = this.props.shows.filter(function (show) {
+      filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return show.city.search(location) > -1;
       });
     return (

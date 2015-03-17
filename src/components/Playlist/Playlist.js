@@ -18,7 +18,8 @@ export default React.createClass({
     var playlist = this.props.playlist;
     return (
       <li className='Playlist'>
-        <h2>{playlist.name} {playlist.date}</h2>
+        <h2>{playlist.name}</h2>
+        <h3>{playlist.date}</h3>
         <div className='row'>
           <div className='col-sm-6'>  {/* //agb remove below 542px wide? maybe just link or band list? */ }
             <div className='embed-container'>

@@ -2,6 +2,7 @@
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
+import SongkickAPI from '../utils/SongkickAPI';
 //import ExecutionEnvironment from 'react/lib/ExecutionEnvironment';
 //import http from 'superagent';
 
@@ -14,19 +15,28 @@ module.exports = {
     })
   },
 
-  setPlaylists: function () {
-    Dispatcher.handleServerAction({
-      actionType: ActionTypes.PLAYLISTS_SET,
-      playlists: playlists
-    })
-  },
+  // setPlaylists: function () {  //agb server or view?
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.PLAYLISTS_SET,
+  //     playlists: playlists
+  //   })
+  // },
 
-  setShows: function () {
-    Dispatcher.handleServerAction({
-      actionType: ActionTypes.SHOWS_SET,
-      shows: shows
-    })
-  },
+  requestShows: function () {
+    //todo not handled but could add spinner or something
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.SHOWS_REQUEST
+    });
+
+    SongkickAPI.requestShows();  //todo pagination number?
+  }
+
+  // setShows: function () {  //agb server or view?
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.SHOWS_SET,
+  //     shows: shows
+  //   })
+  // },
 
   // navigateTo(path) {
   //   if (ExecutionEnvironment.canUseDOM) {

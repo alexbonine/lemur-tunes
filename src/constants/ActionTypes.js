@@ -16,8 +16,11 @@ var ActionTypes = keyMirror({
   // LOAD_PAGE_SUCCESS: null,
   // LOAD_PAGE_ERROR: null,
   CHANGE_LOCATION: null,
-  PLAYLISTS_SET: null,
-  SHOWS_SET: null
+  // PLAYLISTS_SET: null,
+  //SHOWS_SET: null,
+  SHOWS_REQUEST: null,
+  SONGKICK_SHOWS_SUCCESS: null,
+  SONGKICK_SHOWS_ERROR: null
 
 });
 

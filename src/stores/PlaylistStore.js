@@ -19,9 +19,9 @@ var playlists = [  //todo move to server
     { id: '8', name: 'Fuck February', date: 'Feb 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:26AMG3RrFr7gkUXSVKhapX' }
   ]
 
-var setPlaylists = function (newPlaylists) {
-  playlists = newPlaylists;
-}
+// var setPlaylists = function (newPlaylists) {
+//   playlists = newPlaylists;
+// }
 
 // if (__SERVER__) {
 //   pages['/'] = {title: 'Home Page'};
@@ -68,10 +68,10 @@ PlaylistStore.dispatcherToken = Dispatcher.register((payload) => {
 
   switch (action.actionType) {
 
-    case ActionTypes.PLAYLISTS_SET:
-      setPlaylists(action.location);
-      PlaylistStore.emitChange();
-      break;
+    // case ActionTypes.PLAYLISTS_SET:
+    //   setPlaylists(action.location);
+    //   PlaylistStore.emitChange();
+    //   break;
 
     default:
       // Do nothing
