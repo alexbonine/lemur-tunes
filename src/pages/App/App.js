@@ -13,7 +13,6 @@ export default React.createClass({
     return (
       <div className='App'>
         <Navbar />
-        <LocationBar />
         <RouteHandler />
       </div>
     );
