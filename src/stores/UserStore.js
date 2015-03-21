@@ -10,7 +10,7 @@ var CHANGE_EVENT = 'change';
 
 var location = 'Chicago',
   locationOptions = [  //todo move to server
-    { payload: '1', text: 'Chicacgo' },
+    { payload: '1', text: 'Chicago' },
     { payload: '2', text: 'San Francisco' },
     { payload: '3', text: 'Washington, DC' }
   ]

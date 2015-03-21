@@ -31,20 +31,20 @@ export default {
       entries = json.resultsPage.results.calendarEntry,
       array = [];
 
-    for (var i = 0; i < entries.length; i++) {
-      array.push({
-        id: i + 1,
-        onTour: entries[i].reason.trackedArtist[0].onTourUntil ? true : false, // could probably just set true
-        bandPage: entries[i].reason.trackedArtist[0].uri,
-        band: entries[i].reason.trackedArtist[0].displayName,
-        eventDate: entries[i].event.start.date,
-        metroArea: entries[i].event.venue.metroArea.displayName,
-        venue: entries[i].event.venue.displayName,
-        city: entries[i].event.location.city,
-        eventPage: entries[i].event.uri,
-        eventName: entries[i].event.displayName
-      });
-    }
+    return entries.map(function (entry, index) {
+      return {
+        id: index + 1,
+        onTour: entry.reason.trackedArtist[0].onTourUntil ? true : false, // could probably just set true
+        bandPage: entry.reason.trackedArtist[0].uri,
+        band: entry.reason.trackedArtist[0].displayName,
+        eventDate: entry.event.start.date,
+        metroArea: entry.event.venue.metroArea.displayName,
+        venue: entry.event.venue.displayName,
+        city: entry.event.location.city,
+        eventPage: entry.event.uri,
+        eventName: entry.event.displayName
+      };
+    });
 
     return array;
   }

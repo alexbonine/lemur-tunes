@@ -21,7 +21,7 @@ export default React.createClass({
       location: UserStore.getLocation(),
       playlists: PlaylistStore.getPlaylists(),
       shows: ShowsStore.getShows()
-    }
+    };
   },
 
   getInitialState: function () {
@@ -45,7 +45,8 @@ export default React.createClass({
 
   componentWillUnmount: function () {
     UserStore.removeChangeListener(this._onChange);
-    PlaylistStore.addChangeListener(this._onChange);
+    PlaylistStore.removeChangeListener(this._onChange);
+    ShowsStore.removeChangeListener(this._onChange);
   },
 
   render: function () {
