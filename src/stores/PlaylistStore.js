@@ -79,4 +79,4 @@ PlaylistStore.dispatcherToken = Dispatcher.register((payload) => {
 
 });
 
-module.exports = PlaylistStore;
+export default PlaylistStore;

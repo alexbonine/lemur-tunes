@@ -10,7 +10,7 @@ import AboutPage from '../pages/AboutPage';
 import ContactPage from '../pages/ContactPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
-module.exports = (
+export default (
   <Route name='home' path='/' handler={App}>
     <DefaultRoute handler={HomePage} />
     <Route name='playlists' path='/playlists' handler={PlaylistsPage} />

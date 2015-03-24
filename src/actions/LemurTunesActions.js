@@ -6,7 +6,7 @@ import SongkickAPI from '../utils/SongkickAPI';
 //import ExecutionEnvironment from 'react/lib/ExecutionEnvironment';
 //import http from 'superagent';
 
-module.exports = {
+export default {
 
   setLocation: function (location) {
     Dispatcher.handleViewAction({

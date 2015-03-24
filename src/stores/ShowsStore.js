@@ -28,7 +28,6 @@ var setShowsLocation = function (newLocation) {
 //   pages['/'] = {title: 'Home Page'};
 //   pages['/privacy'] = {title: 'Privacy Policy'};
 // }
-
 var ShowsStore = assign({}, EventEmitter.prototype, {
 
   getShows() {
@@ -90,4 +89,4 @@ ShowsStore.dispatcherToken = Dispatcher.register((payload) => {
 
 });
 
-module.exports = ShowsStore;
+export default ShowsStore;

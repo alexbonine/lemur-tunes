@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import LocationBar from '../../components/LocationBar';
 import { RouteHandler, Link } from 'react-router';
 
-export default React.createClass({
+export default class App extends React.Component {
 
   render: function() {
     return (
@@ -18,4 +18,4 @@ export default React.createClass({
     );
   }
 
-});
+};

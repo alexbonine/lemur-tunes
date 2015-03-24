@@ -3,8 +3,8 @@
 var React = require('react'),
   reactRouter = require('react-router'),
   routes = require('./routes');
-
-module.exports = {
+  
+export default {
   router: null,
   renderToDom: function () {
     var router = reactRouter.create({

@@ -6,7 +6,7 @@ import LemurTunesActions from '../../actions/LemurTunesActions';
 import { DropDownMenu } from 'material-ui';
 import './LocationBar.less'
 
-export default React.createClass({
+export default class LocationBar extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
 
   handleLocationChange: function (e, selectedIndex, menuItem) {
@@ -19,4 +19,4 @@ export default React.createClass({
       <DropDownMenu className='LocationBar' menuItems={this.props.locationOptions} onChange={this.handleLocationChange} />
     );
   }
-});
+};

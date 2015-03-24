@@ -10,7 +10,7 @@
 
 import keyMirror from 'react/lib/keyMirror';
 
-var ActionTypes = keyMirror({
+export default keyMirror({
 
   // LOAD_PAGE: null,
   // LOAD_PAGE_SUCCESS: null,
@@ -23,5 +23,3 @@ var ActionTypes = keyMirror({
   SONGKICK_SHOWS_ERROR: null
 
 });
-
-module.exports = ActionTypes;

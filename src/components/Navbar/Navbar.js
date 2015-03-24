@@ -9,7 +9,7 @@ import LocationBar from '../LocationBar';
 import { Link } from 'react-router';
 import { Toolbar, ToolbarGroup, FlatButton } from 'material-ui';
 
-export default React.createClass({
+export default class Navbar extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
 
   //todo from local cookie or user settings
@@ -54,4 +54,4 @@ export default React.createClass({
     this.setState(this.getStateFromStore());
   }
 
-});
+};

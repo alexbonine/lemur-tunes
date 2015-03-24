@@ -8,7 +8,7 @@ import LemurTunesActions from '../../actions/LemurTunesActions';
 import ShowsTabs from '../../components/ShowsTabs';
 import './CalendarPage.less';
 
-export default React.createClass({
+export default class CalendarPage extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
 
   getShows: function () {
@@ -48,4 +48,4 @@ export default React.createClass({
     this.setState(this.getStateFromStores());
   }
 
-});
+};

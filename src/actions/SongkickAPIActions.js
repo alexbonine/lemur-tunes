@@ -3,7 +3,7 @@
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
-module.exports = {
+export default {
   handleShowsSuccess(response) {
     Dispatcher.handleServerAction({
       actionType: ActionTypes.SONGKICK_SHOWS_SUCCESS,

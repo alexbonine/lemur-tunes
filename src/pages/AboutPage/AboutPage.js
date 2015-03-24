@@ -4,7 +4,7 @@ import React from 'react';
 import { PureRenderMixin } from 'react/addons';
 import './AboutPage.less'
 
-export default React.createClass({
+export default class AboutPage extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
 
   render: function () {
@@ -18,4 +18,4 @@ export default React.createClass({
     );
   }
 
-});
+};

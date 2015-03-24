@@ -7,13 +7,8 @@ import { Tabs, Tab } from 'material-ui';
 import Show from '../Show';
 import './ShowsTabs.less';
 
-export default React.createClass({
+export default class ShowsTabs extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
-
-  propTypes: {
-    location: React.PropTypes.string.isRequired,
-    shows: React.PropTypes.array.isRequired
-  },
 
   // onChangeTab: function (tabIndex, tab) {
   // },
@@ -49,4 +44,9 @@ export default React.createClass({
     );
   }
 
-});
+};
+
+ShowsTabs.propTypes: {
+  location: React.PropTypes.string.isRequired,
+  shows: React.PropTypes.array.isRequired
+};

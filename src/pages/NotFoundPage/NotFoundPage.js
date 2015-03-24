@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-export default React.createClass({
+export default class NotFoundPage extends React.Component {
 
   render() {
     return (
@@ -15,4 +15,4 @@ export default React.createClass({
     );
   }
 
-});
+};

@@ -5,14 +5,8 @@ import { PureRenderMixin } from 'react/addons';
 import Shows from '../Shows';
 import './Playlist.less';
 
-export default React.createClass({
+export default class Playlist extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
-
-  propTypes: {
-    location: React.PropTypes.string.isRequired,
-    playlist: React.PropTypes.object.isRequired,
-    shows: React.PropTypes.array.isRequired
-  },
 
   render: function () {
     var playlist = this.props.playlist;
@@ -34,4 +28,10 @@ export default React.createClass({
     );
   }
 
-});
+};
+
+Playlist.propTypes = {
+  location: React.PropTypes.string.isRequired,
+  playlist: React.PropTypes.object.isRequired,
+  shows: React.PropTypes.array.isRequired
+};

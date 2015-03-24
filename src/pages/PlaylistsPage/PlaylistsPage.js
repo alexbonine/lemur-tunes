@@ -9,7 +9,7 @@ import ShowsStore from '../../stores/ShowsStore';
 import LemurTunesActions from '../../actions/LemurTunesActions';
 import './PlaylistsPage.less';
 
-export default React.createClass({
+export default class PlaylistsPage extends React.Component {
   mixins: [PureRenderMixin],  //agb immutable?
 
   getShows: function () {
@@ -67,4 +67,4 @@ export default React.createClass({
     this.setState(this.getStateFromStores());
   }
 
-});
+};

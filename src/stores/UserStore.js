@@ -79,4 +79,4 @@ UserStore.dispatcherToken = Dispatcher.register((payload) => {
 
 });
 
-module.exports = UserStore;
+export default UserStore;
