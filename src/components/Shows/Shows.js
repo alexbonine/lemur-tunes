@@ -1,19 +1,19 @@
 'use strict'
 
 import React from 'react';
-import { PureRenderMixin } from 'react/addons';
+// import { PureRenderMixin } from 'react/addons';
 import { Tabs, Tab } from 'material-ui';
 import Show from '../Show';
 import './Shows.less';
 
 export default class Shows extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
 
   // onChangeTab: function (tabIndex, tab) {
   //   debugger;
   // },
 
-  render: function () {
+  render() {
     var location = this.props.location,
       filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return show.city.search(location) > -1;
@@ -40,7 +40,7 @@ export default class Shows extends React.Component {
 };
 
 
-Shows.propTypes: {
+Shows.propTypes = {
   location: React.PropTypes.string.isRequired,
   shows: React.PropTypes.array.isRequired
 };

@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import { PureRenderMixin } from 'react/addons';
+// import { PureRenderMixin } from 'react/addons';
 import UserStore from '../../stores/UserStore';
 import ShowsStore from '../../stores/ShowsStore';
 import LemurTunesActions from '../../actions/LemurTunesActions';
@@ -9,42 +9,44 @@ import ShowsTabs from '../../components/ShowsTabs';
 import './CalendarPage.less';
 
 export default class CalendarPage extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
 
-  getShows: function () {
+  constructor(props) {
+    super(props);
+    this.state = this.getStateFromStores();
+    this._onChange = this._onChange.bind(this);
+  }
+
+  getShows() {
     LemurTunesActions.requestShows();
-  },
+  }
 
-  getStateFromStores: function () {
+  getStateFromStores() {
     return {
       location: UserStore.getLocation(),
       shows: ShowsStore.getShows()
     };
-  },
+  }
 
-  getInitialState: function () {
-    return this.getStateFromStores();
-  },
-
-  componentDidMount: function () {
+  componentDidMount() {
     UserStore.addChangeListener(this._onChange);
     ShowsStore.addChangeListener(this._onChange);
 
     this.getShows();
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     UserStore.removeChangeListener(this._onChange);
     ShowsStore.removeChangeListener(this._onChange);
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <ShowsTabs location={this.state.location} shows={this.state.shows} />
     );
-  },
+  }
 
-  _onChange: function () {
+  _onChange() {
     this.setState(this.getStateFromStores());
   }
 

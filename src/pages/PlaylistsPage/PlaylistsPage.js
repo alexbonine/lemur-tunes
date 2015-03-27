@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import { PureRenderMixin } from 'react/addons';
+// import { PureRenderMixin } from 'react/addons';
 import Playlist from '../../components/Playlist';
 import UserStore from '../../stores/UserStore';
 import PlaylistStore from '../../stores/PlaylistStore';
@@ -10,31 +10,32 @@ import LemurTunesActions from '../../actions/LemurTunesActions';
 import './PlaylistsPage.less';
 
 export default class PlaylistsPage extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
+  constructor(props) {
+    super(props);
+    this.state = this.getStateFromStores();
+    this._onChange = this._onChange.bind(this);
+  }
 
-  getShows: function () {
+  getShows() {
     LemurTunesActions.requestShows();
-  },
+  }
 
-  getStateFromStores: function () {
+  getStateFromStores() {
     return {
       location: UserStore.getLocation(),
       playlists: PlaylistStore.getPlaylists(),
       shows: ShowsStore.getShows()
     };
-  },
+  }
 
-  getInitialState: function () {
-    return this.getStateFromStores();
-  },
-
-  componentDidMount: function () {
+  componentDidMount() {
     UserStore.addChangeListener(this._onChange);
     PlaylistStore.addChangeListener(this._onChange);
     ShowsStore.addChangeListener(this._onChange);
 
     this.getShows();
-  },
+  }
 
   // componentWillReceiveProps(nextProps) {
   //   if (this.parseFullName(nextProps) !== this.parseFullName(this.props)) {
@@ -43,13 +44,13 @@ export default class PlaylistsPage extends React.Component {
   //   }
   // },
 
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     UserStore.removeChangeListener(this._onChange);
     PlaylistStore.removeChangeListener(this._onChange);
     ShowsStore.removeChangeListener(this._onChange);
-  },
+  }
 
-  render: function () {
+  render() {
     var location = this.state.location,
       shows = this.state.shows;
     //todo anonymously pass props
@@ -61,9 +62,9 @@ export default class PlaylistsPage extends React.Component {
         </ol>
       </div>
     );
-  },
+  }
 
-  _onChange: function () {
+  _onChange() {
     this.setState(this.getStateFromStores());
   }
 

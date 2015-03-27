@@ -8,12 +8,12 @@ import Show from '../Show';
 import './ShowsTabs.less';
 
 export default class ShowsTabs extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
 
   // onChangeTab: function (tabIndex, tab) {
   // },
 
-  render: function () {
+  render() {
     var location = this.props.location,
       localShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return show.city.search(location) > -1;
@@ -46,7 +46,7 @@ export default class ShowsTabs extends React.Component {
 
 };
 
-ShowsTabs.propTypes: {
+ShowsTabs.propTypes = {
   location: React.PropTypes.string.isRequired,
   shows: React.PropTypes.array.isRequired
 };

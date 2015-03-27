@@ -1,13 +1,13 @@
 'use strict'
 
 import React from 'react';
-import { PureRenderMixin } from 'react/addons';
+// import { PureRenderMixin } from 'react/addons';
 import './AboutPage.less'
 
 export default class AboutPage extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
 
-  render: function () {
+  render() {
     //todo serve via jade from the server
     var paragraphOne = 'TBD';
     return (

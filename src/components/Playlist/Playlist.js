@@ -1,14 +1,14 @@
 'use strict'
 
 import React from 'react';
-import { PureRenderMixin } from 'react/addons';
+// import { PureRenderMixin } from 'react/addons';
 import Shows from '../Shows';
 import './Playlist.less';
 
 export default class Playlist extends React.Component {
-  mixins: [PureRenderMixin],  //agb immutable?
+  // mixins: [PureRenderMixin],  //agb immutable?
 
-  render: function () {
+  render() {
     var playlist = this.props.playlist;
     return (
       <li className='Playlist'>
