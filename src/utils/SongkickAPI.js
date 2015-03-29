@@ -4,30 +4,30 @@ import APIUtils from './APIUtils';
 import configAPI from '../constants/configAPI';
 import SongkickAPIActions from '../actions/SongkickAPIActions';
 
-var url = {
+const urls = {
   userCalendar: 'http://api.songkick.com/api/3.0/users/lemurdev/calendar.json'
 }
 
 export default {
   requestShows: function () {
-    var that = this;
+    let that = this;
 
-    APIUtils.get(url.userCalendar,
+    APIUtils.get(urls.userCalendar,
       { reason: 'tracked_artist', apikey: configAPI.songkick.key },
       function (err, res) {
         //todo need to check for multiple pages and request if so - res.page > 1, paginate and request more
         // update store via dispatcher event
-        if (!res.ok) {
-          SongkickAPIActions.handleShowsError(res.text);
+        if (!res || !res.ok) {
+          SongkickAPIActions.handleShowsError(err.message);
           return;
         } else {
-          var response = that.formatShows(res.text);
+          let response = that.formatShows(res.text);
           SongkickAPIActions.handleShowsSuccess(response);
         }
     });
   },
   formatShows: function (text) {
-    var json = JSON.parse(text),
+    let json = JSON.parse(text),
       entries = json.resultsPage.results.calendarEntry,
       array = [];
 

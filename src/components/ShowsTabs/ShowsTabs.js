@@ -3,7 +3,7 @@
 import React from 'react';
 import { PureRenderMixin } from 'react/addons';
 import _ from 'lodash';
-import { Tabs, Tab } from 'material-ui';
+import { Tabs, Tab, Paper } from 'material-ui';
 import Show from '../Show';
 import './ShowsTabs.less';
 
@@ -35,7 +35,13 @@ export default class ShowsTabs extends React.Component {
           </Tab>
           <Tab label='On Tour' >
             <ul>{onTourBands.map(function (band, index) {
-              return (<li key={index}><h4>{band}</h4></li>);
+              return (
+                <li key={index}>
+                  <Paper zDepth={3} rounded={false}>
+                    <p>{band}</p>
+                  </Paper>
+                </li>
+              );
             })}
             </ul>
           </Tab>

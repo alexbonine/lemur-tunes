@@ -11,15 +11,11 @@
 import keyMirror from 'react/lib/keyMirror';
 
 export default keyMirror({
-
-  // LOAD_PAGE: null,
-  // LOAD_PAGE_SUCCESS: null,
-  // LOAD_PAGE_ERROR: null,
   CHANGE_LOCATION: null,
-  // PLAYLISTS_SET: null,
-  //SHOWS_SET: null,
   SHOWS_REQUEST: null,
   SONGKICK_SHOWS_SUCCESS: null,
-  SONGKICK_SHOWS_ERROR: null
-
+  SONGKICK_SHOWS_ERROR: null,
+  PlAYLISTS_REQUEST: null,
+  LEMURTUNES_PLAYLISTS_SUCCESS: null,
+  LEMURTUNES_PLAYLISTS_ERROR: null
 });

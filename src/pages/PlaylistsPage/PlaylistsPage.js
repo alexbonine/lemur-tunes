@@ -17,8 +17,9 @@ export default class PlaylistsPage extends React.Component {
     this._onChange = this._onChange.bind(this);
   }
 
-  getShows() {
+  getData() {
     LemurTunesActions.requestShows();
+    LemurTunesActions.requestPlaylists();
   }
 
   getStateFromStores() {
@@ -34,7 +35,7 @@ export default class PlaylistsPage extends React.Component {
     PlaylistStore.addChangeListener(this._onChange);
     ShowsStore.addChangeListener(this._onChange);
 
-    this.getShows();
+    this.getData();
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -51,13 +52,13 @@ export default class PlaylistsPage extends React.Component {
   }
 
   render() {
-    var location = this.state.location,
-      shows = this.state.shows;
     //todo anonymously pass props
+    let state = this.state;
+
     return (
       <div className='PlaylistsPage'>
-        <ol>{this.state.playlists.map(function (playlist) {
-          return <Playlist key={playlist.id} location={location} playlist={playlist} shows={shows} />;
+        <ol>{state.playlists.map(function (playlist) {
+          return <Playlist key={playlist.id} location={state.location} playlist={playlist} shows={state.shows} />;
         })}
         </ol>
       </div>

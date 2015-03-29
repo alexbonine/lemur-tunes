@@ -11,7 +11,7 @@ export default {
     })
   },
   handleShowsError(error) {
-    console.log(error);
+    console.log('Songkick Shows error: ' + error);
 
     Dispatcher.handleServerAction({
       actionType: ActionTypes.SONGKICK_SHOWS_ERROR//,

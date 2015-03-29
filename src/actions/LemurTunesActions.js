@@ -3,8 +3,8 @@
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
 import SongkickAPI from '../utils/SongkickAPI';
+import LemurTunesAPI from '../utils/LemurTunesAPI';
 //import ExecutionEnvironment from 'react/lib/ExecutionEnvironment';
-//import http from 'superagent';
 
 export default {
 
@@ -29,6 +29,14 @@ export default {
     });
 
     SongkickAPI.requestShows();  //todo pagination number?
+  },
+
+  requestPlaylists: function () {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.PLAYLISTS_REQUEST
+    });
+
+    LemurTunesAPI.requestPlaylists();
   }
 
   // setShows: function () {  //agb server or view?

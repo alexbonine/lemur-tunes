@@ -21,10 +21,10 @@ export default class Shows extends React.Component {
     return (
       <div className='Shows'>
         <h3>Local Shows</h3>
-        <ul>{filteredShows.map(function (show) {
+        <ol>{filteredShows.map(function (show) {
           return <Show key={show.id} show={show} />;
         })}
-        </ul>
+        </ol>
         {/*<Tabs  tabWidth='100' onChange={this.onChangeTab}>
           <Tab label='Local Shows'>
             <h3>Nearby</h3>

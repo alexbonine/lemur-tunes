@@ -2,6 +2,7 @@
 
 import React from 'react';
 // import { PureRenderMixin } from 'react/addons';
+import { Paper } from 'material-ui';
 import Formatting from '../../utils/Formatting';
 import './Show.less';
 
@@ -15,7 +16,9 @@ export default class Show extends React.Component {
 
     return (
       <li className='Playlist'>
-        <h4>{show.band} at {show.venue} - {dateStr}</h4>
+        <Paper zDepth={3} rounded={false}>
+          <p>{show.band}  at {show.venue} - {dateStr}</p>
+        </Paper>
       </li>
     );
   }
