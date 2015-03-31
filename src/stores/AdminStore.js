@@ -8,20 +8,15 @@ import assign from 'react/lib/Object.assign';
 
 const CHANGE_EVENT = 'change';
 
-let location = 'Chicago',
-  //locationOptions = [{ payload: '1', text: 'Chicago' }];  //issue - Material UI doesn't re-render dropdown menu as it saves height: https://github.com/callemall/material-ui/issues/203
-  locationOptions = [  //todo move to server
-    { payload: '1', text: 'Chicago' },
-    { payload: '2', text: 'San Francisco' },
-    { payload: '3', text: 'Washington, DC' }
-  ]
+let addCity = '',
+  snackbarMessage = '';
 
-let setLocation = function (newLocation) {
-  location = newLocation;
+let setAddCity = function (newCity) {
+  addCity = newCity;
 }
 
-let setLocationOptions = function (newLocationOptions) {
-  locationOptions = newLocationOptions;
+let setSnackbarMessage = function (newSnackbarMessage) {
+  snackbarMessage = newSnackbarMessage;
 }
 
 // if (__SERVER__) {
@@ -29,14 +24,14 @@ let setLocationOptions = function (newLocationOptions) {
 //   pages['/privacy'] = {title: 'Privacy Policy'};
 // }
 
-let UserStore = assign({}, EventEmitter.prototype, {
+let AdminStore = assign({}, EventEmitter.prototype, {
 
-  getLocation() {
-    return location;
+  getAddCity() {
+    return addCity;
   },
 
-  getLocationOptions() {
-    return locationOptions;
+  getSnackbarMessage() {
+    return snackbarMessage;
   },
 
   /**
@@ -68,19 +63,24 @@ let UserStore = assign({}, EventEmitter.prototype, {
 
 });
 
-UserStore.dispatcherToken = Dispatcher.register((payload) => {
+AdminStore.dispatcherToken = Dispatcher.register((payload) => {
   var action = payload.action;
 
   switch (action.actionType) {
 
-    case ActionTypes.CHANGE_LOCATION:
-      setLocation(action.location);
-      UserStore.emitChange();
+    case ActionTypes.ADMIN_SET_NEW_CITY:
+      setAddCity(action.newCity);
+      AdminStore.emitChange();
       break;
 
-    case ActionTypes.LEMURTUNES_LOCATION_OPTIONS_SUCCESS:
-      setLocationOptions(action.locationOptions);
-      UserStore.emitChange();
+    case ActionTypes.LEMURTUNES_CITIES_SUCCESS:
+      setSnackbarMessage(action.response);
+      AdminStore.emitChange();
+      break;
+
+    case ActionTypes.LEMURTUNES_CITIES_ERROR:
+      setSnackbarMessage(action.error);
+      AdminStore.emitChange();
       break;
 
     default:
@@ -89,4 +89,4 @@ UserStore.dispatcherToken = Dispatcher.register((payload) => {
 
 });
 
-export default UserStore;
+export default AdminStore;

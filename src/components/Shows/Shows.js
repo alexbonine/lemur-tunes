@@ -25,20 +25,11 @@ export default class Shows extends React.Component {
           return <Show key={show.id} show={show} />;
         })}
         </ol>
-        {/*<Tabs  tabWidth='100' onChange={this.onChangeTab}>
-          <Tab label='Local Shows'>
-            <h3>Nearby</h3>
-          </Tab>
-          <Tab label='On Tour' >
-            <h3>No local shows</h3>
-          </Tab>
-        </Tabs>*/}
       </div>
     );
   }
 
 };
-
 
 Shows.propTypes = {
   location: React.PropTypes.string.isRequired,

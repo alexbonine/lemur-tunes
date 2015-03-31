@@ -21,7 +21,7 @@ export default class Playlist extends React.Component {
 
     return (
       <li className='Playlist'>
-        <h2>{playlist.title} - {playlist.date}</h2>
+        <h2>{playlist.name} - {playlist.date}</h2>
         <div className='row'>
           <div className='col-sm-6'>  {/* //agb remove below 542px wide? maybe just link or band list? */ }
             <ol>{playlist.songs.map(function (song, index) {

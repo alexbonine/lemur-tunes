@@ -73,7 +73,12 @@ ShowsStore.dispatcherToken = Dispatcher.register((payload) => {
     //   ShowsStore.emitChange();
     //   break;
 
-    case ActionTypes.SONGKICK_SHOWS_SUCCESS:
+    // case ActionTypes.SONGKICK_SHOWS_SUCCESS:
+    //   setShows(action.shows);
+    //   ShowsStore.emitChange();
+    //   break;
+
+    case ActionTypes.LEMURTUNES_SHOWS_SUCCESS:
       setShows(action.shows);
       ShowsStore.emitChange();
       break;

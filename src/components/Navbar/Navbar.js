@@ -8,6 +8,7 @@ import UserStore from '../../stores/UserStore';
 import LocationBar from '../LocationBar';
 import { Link } from 'react-router';
 import { Toolbar, ToolbarGroup, FlatButton } from 'material-ui';
+import LemurTunesActions from '../../actions/LemurTunesActions';
 
 export default class Navbar extends React.Component {
   //mixins: [PureRenderMixin],  //agb immutable?
@@ -27,6 +28,8 @@ export default class Navbar extends React.Component {
 
   componentDidMount() {
     UserStore.addChangeListener(this._onChange);
+
+    LemurTunesActions.requestLocationOptions();
   }
 
   componentWillUnmount() {
@@ -42,6 +45,7 @@ export default class Navbar extends React.Component {
             <Link to='playlists'><FlatButton label='Playlists' /></Link>
             <Link to='calendar'><FlatButton label='Calendar' /></Link>
             <Link to='about'><FlatButton label='About' /></Link>
+            <Link to='admin'><FlatButton label='Admin' /></Link>
           </ToolbarGroup>
           <ToolbarGroup key={1} float='right'>
             <LocationBar locationOptions={this.state.locationOptions} />

@@ -9,12 +9,10 @@ export default {
       .end(callback);
   },
 
-  post: function (url, data) {
+  post: function (url, data, callback) {
     request.post(url)
       .set('Content-Type', 'application/json')
       .send(data)
-      .end(function (err, res) {
-
-      });
+      .end(callback);
   }
 };

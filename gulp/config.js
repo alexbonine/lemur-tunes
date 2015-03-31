@@ -35,12 +35,12 @@ module.exports = {
       src + '/styles/material-ui.less',
       src + '/styles/custom.less'
     ],
-    dest: dest + '/css'
+    dest: dest + '/style'
   },
-  vendor: {
-    src: 'node_modules/bootstrap/dist/fonts/**',
-    dest: dest + '/fonts'
-  },
+  // vendor: {
+  //   src: 'node_modules/bootstrap/dist/fonts/**',
+  //   dest: dest + '/fonts'
+  // },
   serve: {
     child: dest + '/server.js'
   },

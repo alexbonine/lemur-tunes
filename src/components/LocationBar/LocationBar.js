@@ -8,15 +8,14 @@ import './LocationBar.less'
 
 export default class LocationBar extends React.Component {
   // mixins: [PureRenderMixin],  //agb immutable?
-
-  handleLocationChange(e, selectedIndex, menuItem) {
-    e.preventDefault();
-    LemurTunesActions.setLocation(menuItem.text);
-  }
-
   render() {
     return (
-      <DropDownMenu className='LocationBar' menuItems={this.props.locationOptions} onChange={this.handleLocationChange} />
+      <DropDownMenu className='LocationBar' menuItems={this.props.locationOptions} onChange={this._handleLocationChange} />
     );
+  }
+
+  _handleLocationChange(e, selectedIndex, menuItem) {
+    e.preventDefault();
+    LemurTunesActions.setLocation(menuItem.text);
   }
 };

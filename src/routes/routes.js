@@ -7,7 +7,7 @@ import HomePage from '../pages/HomePage';
 import PlaylistsPage from '../pages/PlaylistsPage';
 import CalendarPage from '../pages/CalendarPage';
 import AboutPage from '../pages/AboutPage';
-import ContactPage from '../pages/ContactPage';
+import AdminPage from '../pages/AdminPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 export default (
@@ -16,7 +16,7 @@ export default (
     <Route name='playlists' path='/playlists' handler={PlaylistsPage} />
     <Route name='calendar' path='/calendar' handler={CalendarPage} />
     <Route name='about' path='/about' handler={AboutPage} />
-    <Route name='contact' path='/contact' handler={ContactPage} />
+    <Route name='admin' path='/admin' handler={AdminPage} />
     <NotFoundRoute handler={NotFoundPage} />
   </Route>
 );

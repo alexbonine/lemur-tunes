@@ -2,7 +2,7 @@
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import SongkickAPI from '../utils/SongkickAPI';
+// import SongkickAPI from '../utils/SongkickAPI';
 import LemurTunesAPI from '../utils/LemurTunesAPI';
 //import ExecutionEnvironment from 'react/lib/ExecutionEnvironment';
 
@@ -13,6 +13,14 @@ export default {
       actionType: ActionTypes.CHANGE_LOCATION,
       location: location
     })
+  },
+
+  requestLocationOptions: function () {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.LOCATION_OPTIONS_REQUEST
+    });
+
+    LemurTunesAPI.requestLocationOptions();
   },
 
   // setPlaylists: function () {  //agb server or view?
@@ -28,7 +36,7 @@ export default {
       actionType: ActionTypes.SHOWS_REQUEST
     });
 
-    SongkickAPI.requestShows();  //todo pagination number?
+    LemurTunesAPI.requestShows();  //todo pagination number?
   },
 
   requestPlaylists: function () {
@@ -37,6 +45,21 @@ export default {
     });
 
     LemurTunesAPI.requestPlaylists();
+  },
+
+  setNewCity: function (newCity) {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.ADMIN_SET_NEW_CITY,
+      newCity: newCity
+    })
+  },
+
+  addCity: function (city) {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.ADMIN_ADD_CITY
+    });
+
+    LemurTunesAPI.addCity(city)
   }
 
   // setShows: function () {  //agb server or view?
