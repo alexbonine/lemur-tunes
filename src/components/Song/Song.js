@@ -9,7 +9,7 @@ export default class Song extends React.Component {
     return (
       <li>
         <Paper zDepth={3} rounded={false}>
-          <p>{this.props.song.name} - {this.props.song.band}</p>
+          <p><strong>{this.props.song.trackNumber} - <em>{this.props.song.name}</em> - {this.props.song.band}</strong></p>
         </Paper>
       </li>
     );

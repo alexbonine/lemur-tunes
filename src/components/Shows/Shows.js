@@ -18,11 +18,12 @@ export default class Shows extends React.Component {
       filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return show.city.search(location) > -1;
       });
+
     return (
       <div className='Shows'>
         <h3>Local Shows</h3>
-        <ol>{filteredShows.map(function (show) {
-          return <Show key={show.id} show={show} />;
+        <ol>{filteredShows.map(function (show, index) {
+          return <Show key={index} show={show} />;
         })}
         </ol>
       </div>

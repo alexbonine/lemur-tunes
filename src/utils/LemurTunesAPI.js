@@ -3,11 +3,13 @@
 import APIUtils from './APIUtils';
 import LemurTunesAPIActions from '../actions/LemurTunesAPIActions';
 
-const base = 'http://localhost:10888/api';//'http://music.alexbonine.com/'
+const base = 'http://localhost:10888/api/';//'http://music.alexbonine.com/api/'
 const urls = {
-  playlists: base + '/playlists',
-  cities: base + '/cities',
-  shows: base + '/shows',
+  playlists: base + 'playlists',
+  cities: base + 'cities',
+  shows: base + 'shows',
+  verifysongkick: base + 'verifysongkick',
+  importalldata: base + 'importalldata'
 };
 
 export default {
@@ -54,12 +56,37 @@ export default {
     APIUtils.post(urls.cities,
       { city: city, state: state },
       function (err, res) {
-        debugger
         if (!res || !res.ok) {
           LemurTunesAPIActions.handleCitiesError(err.message);
           return;
         } else {
           LemurTunesAPIActions.handleCitiesSuccess(res);
+        }
+      });
+  },
+  verifySongkick: function () {
+    APIUtils.get(urls.verifysongkick,
+      {},
+      function (err, res) {
+        if (!res || !res.ok) {
+          // LemurTunesAPIActions.handleVerifySongkickError(err.message);
+          LemurTunesAPIActions.handleAdminError(err.message);
+        } else {
+          // LemurTunesAPIActions.handleVerifySongkickSuccess(JSON.parse(res.text));
+          LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));
+        }
+      });
+  },
+  importAllData: function (cities, shows, playlists, songs, bands) {
+    APIUtils.get(urls.importalldata,
+      {'cities': cities, 'shows': shows, 'playlists': playlists, 'songs': songs, 'bands': bands},
+      function (err, res) {
+        if (!res || !res.ok) {
+          // LemurTunesAPIActions.handleImportAllDataError(err.message);
+          LemurTunesAPIActions.handleAdminError(err.message);
+        } else {
+          // LemurTunesAPIActions.handleImportAllDataSuccess(JSON.parse(res.text));
+          LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));
         }
       });
   }

@@ -9,7 +9,8 @@ import assign from 'react/lib/Object.assign';
 const CHANGE_EVENT = 'change';
 
 let addCity = '',
-  snackbarMessage = '';
+  snackbarMessage = '',
+  results = '';
 
 let setAddCity = function (newCity) {
   addCity = newCity;
@@ -17,6 +18,14 @@ let setAddCity = function (newCity) {
 
 let setSnackbarMessage = function (newSnackbarMessage) {
   snackbarMessage = newSnackbarMessage;
+}
+
+// let setVerifySongkickResults = function (stats) {
+//   verifySongkickResults = stats;
+// }
+
+let setResults = function (resp) {
+  results = resp;
 }
 
 // if (__SERVER__) {
@@ -32,6 +41,14 @@ let AdminStore = assign({}, EventEmitter.prototype, {
 
   getSnackbarMessage() {
     return snackbarMessage;
+  },
+
+  // getVerifySongkickResults() {
+  //   return verifySongkickResults;
+  // },
+
+  getResults() {
+    return results;
   },
 
   /**
@@ -73,18 +90,39 @@ AdminStore.dispatcherToken = Dispatcher.register((payload) => {
       AdminStore.emitChange();
       break;
 
-    case ActionTypes.LEMURTUNES_CITIES_SUCCESS:
+    case ActionTypes.LEMURTUNES_CITIES_POST_SUCCESS:
       setSnackbarMessage(action.response);
       AdminStore.emitChange();
       break;
 
-    case ActionTypes.LEMURTUNES_CITIES_ERROR:
+    case ActionTypes.LEMURTUNES_CITIES_POST_ERROR:
       setSnackbarMessage(action.error);
       AdminStore.emitChange();
       break;
 
+    // case ActionTypes.LEMURTUNES_VERIFY_SONGKICK_SUCCESS:
+    //   setVerifySongkickResults(action.results);
+    //   AdminStore.emitChange()
+    //   break;
+
+    // case ActionTypes.LEMURTUNES_VERIFY_SONGKICK_ERROR:
+    //   // set data
+    //   AdminStore.emitChange()
+    //   break;
+
+    case ActionTypes.LEMURTUNES_ADMIN_SUCCESS:
+      setResults(action.results);
+      AdminStore.emitChange()
+      break;
+
+    case ActionTypes.LEMURTUNES_ADMIN_ERROR:
+      setResults(action.results);
+      AdminStore.emitChange()
+      break;
+
     default:
       // Do nothing
+      break;
   }
 
 });

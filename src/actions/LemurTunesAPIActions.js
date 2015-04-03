@@ -38,7 +38,7 @@ export default {
     Dispatcher.handleServerAction({
       actionType: ActionTypes.LEMURTUNES_SHOWS_SUCCESS,
       shows: response
-    })
+    });
   },
 
   handleShowsError: function(error) {
@@ -46,22 +46,68 @@ export default {
 
     Dispatcher.handleServerAction({
       actionType: ActionTypes.LEMURTUNES_SHOWS_ERROR
-    })
+    });
   },
 
-  handleCitiesSuccess: function(response) {
+  // handleVerifySongkickSuccess: function(response) {
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_VERIFY_SONGKICK_SUCCESS,
+  //     results: response
+  //   });
+  // },
+
+  // handleVerifySongkickError: function(error) {
+  //   console.log('Verify Songkick error: ' + error);
+
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_VERIFY_SONGKICK_ERROR
+  //   });
+  // },
+
+  // handleImportAllDataSuccess: function(response) {
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_IMPORT_ALL_DATA_GET_SUCCESS,
+  //     results: response
+  //   });
+  // },
+
+  // handleImportAllDataError: function(error) {
+  //   console.log('Import All Data error: ' + error);
+
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_IMPORT_ALL_DATA_GET_ERROR
+  //   });
+  // }
+
+  handleAdminSuccess: function(response) {
     Dispatcher.handleServerAction({
-      actionType: ActionTypes.LEMURTUNES_CITIES_SUCCESS,
-      response: response
-    })
+      actionType: ActionTypes.LEMURTUNES_ADMIN_SUCCESS,
+      results: response
+    });
   },
 
-  handleCitiesError: function(error) {
-    console.log('Cities error: ' + error);
+  handleAdminError: function(error) {
+    console.log('Admin error: ' + error);
 
     Dispatcher.handleServerAction({
-      actionType: ActionTypes.LEMURTUNES_CITIES_ERROR,
-      error: error
-    })
-  }
+      actionType: ActionTypes.LEMURTUNES_ADMIN_ERROR,
+      results: error
+    });
+  },
+ 
+  // handleCitiesSuccess: function(response) {  // for the post?
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_CITIES_SUCCESS,
+  //     response: response
+  //   })
+  // },
+
+  // handleCitiesError: function(error) {
+  //   console.log('Cities error: ' + error);
+
+  //   Dispatcher.handleServerAction({
+  //     actionType: ActionTypes.LEMURTUNES_CITIES_ERROR,
+  //     error: error
+  //   })
+  // }
 }

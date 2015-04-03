@@ -58,7 +58,7 @@ export default class PlaylistsPage extends React.Component {
     return (
       <div className='PlaylistsPage'>
         <ol>{state.playlists.map(function (playlist) {
-          return <Playlist key={playlist.id} location={state.location} playlist={playlist} shows={state.shows} />;
+          return <Playlist key={playlist.playlistId} location={state.location} playlist={playlist} shows={state.shows} />;
         })}
         </ol>
       </div>

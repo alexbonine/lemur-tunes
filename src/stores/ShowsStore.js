@@ -20,7 +20,7 @@ var setShows = function (newShows) {
   shows = newShows;
 }
 
-var setShowsLocation = function (newLocation) {
+var setShowsLocation = function (newLocation) {  // no get?
   showsLocation = newLocation;
 }
 

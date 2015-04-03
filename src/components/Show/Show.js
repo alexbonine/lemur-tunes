@@ -12,12 +12,13 @@ export default class Show extends React.Component {
 // { id: 1, onTour: true, bandPage: 'http://www.songkick.com/artists/3927026-moon-hooch?utm_source=33007&utm_medium=partner', band: 'Modest Mouse', eventDate: '2015-07-19', metroArea: 'Chicago', venue: 'Union Park', city: 'Chicago, IL, US', eventPage: 'http://www.songkick.com/concerts/22813118-moon-hooch-at-catalyst?utm_source=33007&utm_medium=partner', eventName: 'Modest Mouse at Union Park (July 19, 2015)' }
   render() {
     var show = this.props.show,
-      dateStr = Formatting.toDateString(new Date(show.eventDate));
+      dateStr = Formatting.toDateString(new Date(show.eventDate)),
+      billing = (show.billingIndex === 1) ? 'Headliner' : 'Support';
 
     return (
       <li className='Playlist'>
         <Paper zDepth={3} rounded={false}>
-          <p>{show.band}  at {show.venue} - {dateStr}</p>
+          <p><strong>{show.bandName}</strong> - {show.venue} - {dateStr} - {billing} - <a href={show.link} target='_blank'>Songkick Page</a></p>
         </Paper>
       </li>
     );

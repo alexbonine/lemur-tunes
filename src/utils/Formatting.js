@@ -4,6 +4,6 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 
 
 export default {
   toDateString: function (date) {
-    return months[date.getMonth()] + ' ' + date.getDate();
+    return  (date.getMonth() + 1) + '/' + date.getDate(); //months[date.getMonth()]
   }
 };

@@ -60,6 +60,27 @@ export default {
     });
 
     LemurTunesAPI.addCity(city)
+  },
+
+  verifySongkick: function () {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.VERIFY_SONGKICK_GET
+    });
+
+    LemurTunesAPI.verifySongkick();
+  },
+
+  importAllData: function (cities, shows, playlists, songs, bands) {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.IMPORT_ALL_DATA_GET,
+      cities: cities,
+      shows: shows,
+      playlists: playlists,
+      songs: songs,
+      bands: bands
+    });
+
+    LemurTunesAPI.importAllData(cities, shows, playlists, songs, bands);
   }
 
   // setShows: function () {  //agb server or view?

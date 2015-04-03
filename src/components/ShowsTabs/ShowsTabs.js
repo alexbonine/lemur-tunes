@@ -19,7 +19,7 @@ export default class ShowsTabs extends React.Component {
         return show.city.search(location) > -1;
       }),
       onTourBands = _.chain(this.props.shows)
-        .map(function (show) { return show.band })
+        .map(function (show) { return show.bandName })
         .uniq()
         .sortBy()
         .value();
@@ -28,8 +28,8 @@ export default class ShowsTabs extends React.Component {
       <div className='Shows'>
         <Tabs  tabWidth='100' onChange={this.onChangeTab}>
           <Tab label='Local Shows'>
-            <ul>{localShows.map(function (show) {
-              return <Show key={show.id} show={show} />;
+            <ul>{localShows.map(function (show, index) {
+              return <Show key={index} show={show} />;
             })}
             </ul>
           </Tab>

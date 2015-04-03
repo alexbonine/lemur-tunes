@@ -13,7 +13,7 @@ export default class Playlist extends React.Component {
     let playlist = this.props.playlist;
     let filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return playlist.songs.some(function (song) {
-          if (song.band === show.band) {
+          if (song.band === show.bandName) {
             return true;
           }
         });
@@ -30,14 +30,14 @@ export default class Playlist extends React.Component {
             </ol>
           </div>
           <div className='col-sm-6'>
-            <iframe src={playlist.link} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+            <a className="mui-font-style-title" href={playlist.link} target='_blank'>Listen on Spotify!</a> {/* todo switch to launch app */}
             <Shows location={this.props.location} shows={filteredShows} />
           </div>
         </div>
       </li>
     );
   }
-
+// <iframe src={playlist.link} width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 };
 
 Playlist.propTypes = {
