@@ -6,10 +6,11 @@ import './Song.less';
 
 export default class Song extends React.Component {
   render() {
+    let song = this.props.song;
     return (
       <li>
         <Paper zDepth={3} rounded={false}>
-          <p><strong>{this.props.song.trackNumber} - <em>{this.props.song.name}</em> - {this.props.song.band}</strong></p>
+          <p><strong>{song.trackNumber} - <em>{song.name}</em> - {song.band} - </strong><a href={song.link} target='_blank'>Play</a></p>
         </Paper>
       </li>
     );

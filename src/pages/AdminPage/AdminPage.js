@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import { TextField, RaisedButton, Checkbox, Snackbar } from 'material-ui';
+import { TextField, RaisedButton, Checkbox, Snackbar, Paper, Dialog } from 'material-ui';
 import AdminStore from '../../stores/AdminStore';
 import LemurTunesActions from '../../actions/LemurTunesActions';
 import ResultsPane from '../../components/ResultsPane'
@@ -42,33 +42,53 @@ export default class AdminPage extends React.Component {
     AdminStore.removeChangeListener(this._onChange);
   }
 
-  //verifysongkick
-
   render() {
     return (
-      <div>
+      <div className='AdminPage container-fluid'>
         <div className='row'>
           <div className='col-sm-6'>
             <h3>Controls</h3>
+            <div>
+              <TextField
+                id='updateShows'
+                disabled={true}
+                defaultValue='Update Shows in DB' />
+              <RaisedButton label='Get Tuned' secondary={true} onClick={this._handleUpdateShowsDb} />
+            </div>
+            <div>
+              <TextField
+                id='addCity'
+                ref='addCity'
+                hintText='City, ST'
+                errorText=''
+                floatingLabelText='Add New City'
+                onBlur={this._handleAddCityOnBlur} />
+              <RaisedButton label='Submit' secondary={true} onClick={this._handleAddCitySubmit} />
+            </div>
+            <div>
+              <TextField
+                id='verifySongkick'
+                disabled={true}
+                defaultValue='Verify Songkick DB' />
+              <RaisedButton label='Get Stats' secondary={true} onClick={this._handleVerifySongkick} />
+            </div>
             <TextField
-              id='addCity'
-              ref='addCity'
-              hintText='City, ST'
-              errorText=''
-              floatingLabelText='Add New City'
-              onBlur={this._handleAddCityOnBlur} />
-            <RaisedButton label='Submit' secondary={true} onClick={this._handleAddCitySubmit} />
-            <TextField
-              id='verifySongkick'
-              disabled={true}
-              defaultValue='Verify Songkick DB' />
-            <RaisedButton label='Get Stats' secondary={true} onClick={this._handleVerifySongkick} />
-            <Checkbox id='cities' ref='cities' value='cities' label='Cities' />
-            <Checkbox id='shows' ref='shows' value='shows' label='Shows' />
-            <Checkbox id='playlists' ref='playlists' value='playlists' label='Playlists' />
-            <Checkbox id='songs' ref='songs' value='songs' label='Songs' />
-            <Checkbox id='bands' ref='bands' value='bands' label='Bands' />
-            <RaisedButton label='Import' secondary={true} onClick={this._handleImport} />
+                id='username'
+                ref='username'
+                hintText='Required for Imports'
+                floatingLabelText='Username' />
+            <div className='row'>
+              <div className='col-sm-6'>
+                <Checkbox id='cities' ref='cities' value='cities' label='Cities' />
+                <Checkbox id='shows' ref='shows' value='shows' label='Shows' />
+                <Checkbox id='playlists' ref='playlists' value='playlists' label='Playlists' />
+              </div>
+              <div className='col-sm-6'>
+                <Checkbox id='songs' ref='songs' value='songs' label='Songs' />
+                <Checkbox id='bands' ref='bands' value='bands' label='Bands' />
+                <RaisedButton label='Import' secondary={true} onClick={this._handleImport} />
+              </div>
+            </div>
           </div>
           <div className='col-sm-6'>
             <ResultsPane results={this.state.results} />
@@ -79,6 +99,9 @@ export default class AdminPage extends React.Component {
           message={this.state.snackbarMessage}
           action='Dismiss'
           onActionTouchTap={this._handleActionTouchTap} />
+        <Dialog title='Username Required For Imports' ref='dialog' actions={[{text:'OK'}]}>
+          Please enter a valid username to import data.
+        </Dialog>
       </div>
     );
   }
@@ -91,6 +114,11 @@ export default class AdminPage extends React.Component {
     }, 4000)
   }
 
+  _handleUpdateShowsDb(e) {
+    e.preventDefault();
+    LemurTunesActions.updateShowsDb();
+  }
+
   _handleVerifySongkick(e) {
     e.preventDefault();
     LemurTunesActions.verifySongkick();
@@ -98,19 +126,23 @@ export default class AdminPage extends React.Component {
 
   _handleImport(e) {
     e.preventDefault();
-    let cities = this.refs.cities.isChecked(),
+    if (this.refs.username.getValue()) {
+      let cities = this.refs.cities.isChecked(),
       shows = this.refs.shows.isChecked(),
       playlists = this.refs.playlists.isChecked(),
       songs = this.refs.songs.isChecked(),
       bands = this.refs.bands.isChecked();
 
-    LemurTunesActions.importAllData(cities, shows, playlists, songs, bands);
+      LemurTunesActions.importAllData(username, cities, shows, playlists, songs, bands);
+    } else {
+      this.refs.dialog.show()
+    }
   }
 
   _handleAddCitySubmit(e) {
     e.preventDefault();
-    let array = this.state.addCity.split(',');
-    LemurTunesActions.addCity(array[0].trim(), array[1].trim());
+    // let array = this.state.addCity.split(',');
+    // LemurTunesActions.addCity(array[0].trim(), array[1].trim());
   }
 
   _handleAddCityOnBlur(e) {

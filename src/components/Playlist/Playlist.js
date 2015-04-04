@@ -4,6 +4,7 @@ import React from 'react';
 // import { PureRenderMixin } from 'react/addons';
 import Shows from '../Shows';
 import Song from '../Song';
+import Formatting from '../../utils/Formatting';
 import './Playlist.less';
 
 export default class Playlist extends React.Component {
@@ -11,6 +12,7 @@ export default class Playlist extends React.Component {
 
   render() {
     let playlist = this.props.playlist;
+    let date = Formatting.toDateString(new Date(playlist.date))
     let filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return playlist.songs.some(function (song) {
           if (song.band === show.bandName) {
@@ -20,8 +22,8 @@ export default class Playlist extends React.Component {
     });
 
     return (
-      <li className='Playlist'>
-        <h2>{playlist.name} - {playlist.date}</h2>
+      <li className='Playlist containter'>
+        <h2>{playlist.name} - {date}</h2>
         <div className='row'>
           <div className='col-sm-6'>  {/* //agb remove below 542px wide? maybe just link or band list? */ }
             <ol>{playlist.songs.map(function (song, index) {
@@ -30,7 +32,7 @@ export default class Playlist extends React.Component {
             </ol>
           </div>
           <div className='col-sm-6'>
-            <a className="mui-font-style-title" href={playlist.link} target='_blank'>Listen on Spotify!</a> {/* todo switch to launch app */}
+            <h5><a href={playlist.link} target='_blank'>Listen on Spotify!</a></h5> {/* todo switch to launch app */}
             <Shows location={this.props.location} shows={filteredShows} />
           </div>
         </div>

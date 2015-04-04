@@ -70,9 +70,10 @@ export default {
     LemurTunesAPI.verifySongkick();
   },
 
-  importAllData: function (cities, shows, playlists, songs, bands) {
+  importAllData: function (username, cities, shows, playlists, songs, bands) {
     Dispatcher.handleViewAction({
       actionType: ActionTypes.IMPORT_ALL_DATA_GET,
+      username: username,
       cities: cities,
       shows: shows,
       playlists: playlists,
@@ -80,7 +81,15 @@ export default {
       bands: bands
     });
 
-    LemurTunesAPI.importAllData(cities, shows, playlists, songs, bands);
+    LemurTunesAPI.importAllData(username, cities, shows, playlists, songs, bands);
+  },
+
+  updateShowsDb: function () {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.UPDATE_SHOWS_DB_GET,
+    });
+
+    LemurTunesAPI.updateShowsDb();
   }
 
   // setShows: function () {  //agb server or view?

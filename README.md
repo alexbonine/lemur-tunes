@@ -1,5 +1,7 @@
 # lemur-tunes
-Music site using React, Flux, Isomorphic JS (eventually)
+Music site using React, Flux, Isomorphic JS (eventually, API and site currently served by Google App Engine)
+
+Latest production release: http://music.alexbonine.com
 
 Base app is my fork of kriasoft's React Starter Kit:
 https://github.com/alexbonine/react-starter-kit.git

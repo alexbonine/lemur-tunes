@@ -23,6 +23,7 @@ export default keyMirror({
   SHOWS_REQUEST: null,
   LEMURTUNES_SHOWS_SUCCESS: null,
   LEMURTUNES_SHOWS_ERROR: null,
+  UPDATE_SHOWS_DB_GET: null,
   ADMIN_SET_NEW_CITY: null,
   ADMIN_ADD_CITY: null,
   LEMURTUNES_CITIES_POST_SUCCESS: null,

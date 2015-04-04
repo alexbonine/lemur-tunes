@@ -8,6 +8,7 @@ const urls = {
   playlists: base + 'playlists',
   cities: base + 'cities',
   shows: base + 'shows',
+  updateShowsDb: base + 'updateshowsdb',
   verifysongkick: base + 'verifysongkick',
   importalldata: base + 'importalldata'
 };
@@ -64,7 +65,7 @@ export default {
         }
       });
   },
-  verifySongkick: function () {
+  verifySongkick: function () { // todo - make POST
     APIUtils.get(urls.verifysongkick,
       {},
       function (err, res) {
@@ -77,15 +78,26 @@ export default {
         }
       });
   },
-  importAllData: function (cities, shows, playlists, songs, bands) {
+  importAllData: function (username, cities, shows, playlists, songs, bands) { // todo - make POST
     APIUtils.get(urls.importalldata,
-      {'cities': cities, 'shows': shows, 'playlists': playlists, 'songs': songs, 'bands': bands},
+      {'username': username, 'cities': cities, 'shows': shows, 'playlists': playlists, 'songs': songs, 'bands': bands},
       function (err, res) {
         if (!res || !res.ok) {
           // LemurTunesAPIActions.handleImportAllDataError(err.message);
-          LemurTunesAPIActions.handleAdminError(err.message);
+          LemurTunesAPIActions.handleAdminError(err.message + ' - ' + JSON.parse(err.response.text));
         } else {
           // LemurTunesAPIActions.handleImportAllDataSuccess(JSON.parse(res.text));
+          LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));
+        }
+      });
+  },
+  updateShowsDb: function () {  // todo - make POST
+    APIUtils.get(urls.updateShowsDb,
+      {},
+      function (err, res) {
+        if (!res || !res.ok) {
+          LemurTunesAPIActions.handleAdminError(err.message);
+        } else {
           LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));
         }
       });
