@@ -35,7 +35,12 @@ export default class PlaylistsPage extends React.Component {
     PlaylistStore.addChangeListener(this._onChange);
     ShowsStore.addChangeListener(this._onChange);
 
-    this.getData();
+    if (!this.state.playlists.length) {
+      LemurTunesActions.requestPlaylists();
+    }
+    if (!this.state.shows.length) {
+      LemurTunesActions.requestShows();
+    }
   }
 
   // componentWillReceiveProps(nextProps) {

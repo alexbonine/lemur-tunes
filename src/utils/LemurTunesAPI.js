@@ -3,7 +3,7 @@
 import APIUtils from './APIUtils';
 import LemurTunesAPIActions from '../actions/LemurTunesAPIActions';
 
-const base = 'http://localhost:10888/api/';//'http://music.alexbonine.com/api/'
+const base = 'http://localhost:10888/api/';//'http://music.alexbonine.com/api/';
 const urls = {
   playlists: base + 'playlists',
   cities: base + 'cities',

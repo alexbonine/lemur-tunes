@@ -14,7 +14,7 @@ export default class Shows extends React.Component {
   // },
 
   render() {
-    var location = this.props.location,
+    let location = this.props.location,
       filteredShows = this.props.shows.filter(function (show) { //todo make immutable data sort mixin
         return show.city.search(location) > -1;
       });

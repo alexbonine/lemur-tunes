@@ -126,7 +126,8 @@ export default class AdminPage extends React.Component {
 
   _handleImport(e) {
     e.preventDefault();
-    if (this.refs.username.getValue()) {
+    let username = this.refs.username.getValue();
+    if (username) {
       let cities = this.refs.cities.isChecked(),
       shows = this.refs.shows.isChecked(),
       playlists = this.refs.playlists.isChecked(),

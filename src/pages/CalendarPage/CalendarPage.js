@@ -31,8 +31,10 @@ export default class CalendarPage extends React.Component {
   componentDidMount() {
     UserStore.addChangeListener(this._onChange);
     ShowsStore.addChangeListener(this._onChange);
-
-    this.getShows();
+    
+    if (!this.state.shows.length) {
+      LemurTunesActions.requestShows();
+    }
   }
 
   componentWillUnmount() {
