@@ -11,9 +11,9 @@ const CHANGE_EVENT = 'change';
 let location = 'Chicago',
   //locationOptions = [{ payload: '1', text: 'Chicago' }];  //issue - Material UI doesn't re-render dropdown menu as it saves height: https://github.com/callemall/material-ui/issues/203
   locationOptions = [  //todo move to server
-    { payload: '1', text: 'Chicago' },
-    { payload: '2', text: 'San Francisco' },
-    { payload: '3', text: 'Washington, DC' }
+    { payload: 1, text: 'Chicago' },
+    { payload: 2, text: 'San Francisco' },
+    { payload: 3, text: 'Washington, DC' }
   ]
 
 let setLocation = function (newLocation) {

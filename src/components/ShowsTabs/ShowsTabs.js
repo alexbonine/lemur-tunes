@@ -26,7 +26,7 @@ export default class ShowsTabs extends React.Component {
 
     return (
       <div className='Shows'>
-        <Tabs  tabWidth='100' onChange={this.onChangeTab}>
+        <Tabs tabWidth={100} onChange={this.onChangeTab}>
           <Tab label='Local Shows'>
             <ul>{localShows.map(function (show, index) {
               return <Show key={index} show={show} />;

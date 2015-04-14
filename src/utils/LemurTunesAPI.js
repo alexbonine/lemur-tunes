@@ -14,9 +14,9 @@ const urls = {
 };
 
 export default {
-  requestPlaylists: function () {
+  requestPlaylists: function (initialData) {
     APIUtils.get(urls.playlists,
-      {},
+      {'initial': initialData},
       function (err, res) {
         // update store via dispatcher event
         if (!res || !res.ok) {
@@ -40,9 +40,9 @@ export default {
         }
     });
   },
-  requestShows: function () {
+  requestShows: function (limit, offset) {
     APIUtils.get(urls.shows,
-      {},
+      {'limit': limit, 'offset': offset},
       function (err, res) {
         // update store via dispatcher event
         if (!res || !res.ok) {
@@ -84,7 +84,8 @@ export default {
       function (err, res) {
         if (!res || !res.ok) {
           // LemurTunesAPIActions.handleImportAllDataError(err.message);
-          LemurTunesAPIActions.handleAdminError(err.message + ' - ' + JSON.parse(err.response.text));
+          var response = (err.response) ?  ' - ' + JSON.parse(err.response.text) : '';
+          LemurTunesAPIActions.handleAdminError(err.message + response);
         } else {
           // LemurTunesAPIActions.handleImportAllDataSuccess(JSON.parse(res.text));
           LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));

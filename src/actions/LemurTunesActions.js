@@ -15,6 +15,21 @@ export default {
     })
   },
 
+  setPlaylist: function (index) {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.CHANGE_PLAYLIST,
+      index: index
+    })
+  },
+
+  setCalendarDateSelected: function (index, text) {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.CHANGE_CALENDAR_DATE,
+      text: text,
+      index: index
+    })
+  },
+
   requestLocationOptions: function () {
     Dispatcher.handleViewAction({
       actionType: ActionTypes.LOCATION_OPTIONS_REQUEST
@@ -30,21 +45,21 @@ export default {
   //   })
   // },
 
-  requestShows: function () {
+  requestShows: function (limit, offset) {
     //todo not handled but could add spinner or something
     Dispatcher.handleViewAction({
       actionType: ActionTypes.SHOWS_REQUEST
     });
 
-    LemurTunesAPI.requestShows();  //todo pagination number?
+    LemurTunesAPI.requestShows(limit, offset);  //todo pagination number?
   },
 
-  requestPlaylists: function () {
+  requestPlaylists: function (initialData) {
     Dispatcher.handleViewAction({
       actionType: ActionTypes.PLAYLISTS_REQUEST
     });
 
-    LemurTunesAPI.requestPlaylists();
+    LemurTunesAPI.requestPlaylists(initialData);
   },
 
   setNewCity: function (newCity) {

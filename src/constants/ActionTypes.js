@@ -12,6 +12,8 @@ import keyMirror from 'react/lib/keyMirror';
 
 export default keyMirror({
   CHANGE_LOCATION: null,
+  CHANGE_PLAYLIST: null,
+  CHANGE_CALENDAR_DATE: null,
   // SONGKICK_SHOWS_SUCCESS: null,
   // SONGKICK_SHOWS_ERROR: null,
   PlAYLISTS_REQUEST: null,

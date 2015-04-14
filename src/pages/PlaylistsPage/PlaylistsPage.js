@@ -7,6 +7,7 @@ import UserStore from '../../stores/UserStore';
 import PlaylistStore from '../../stores/PlaylistStore';
 import ShowsStore from '../../stores/ShowsStore';
 import LemurTunesActions from '../../actions/LemurTunesActions';
+import WrappedDropdown from '../../components/WrappedDropdown';
 import './PlaylistsPage.less';
 
 export default class PlaylistsPage extends React.Component {
@@ -17,16 +18,18 @@ export default class PlaylistsPage extends React.Component {
     this._onChange = this._onChange.bind(this);
   }
 
-  getData() {
-    LemurTunesActions.requestShows();
-    LemurTunesActions.requestPlaylists();
+  getAllData() {
+    //LemurTunesActions.requestShows();
+    LemurTunesActions.requestPlaylists(false);
   }
 
   getStateFromStores() {
     return {
       location: UserStore.getLocation(),
       playlists: PlaylistStore.getPlaylists(),
-      shows: ShowsStore.getShows()
+      shows: ShowsStore.getShows(),
+      playlistOptions: PlaylistStore.getPlaylistOpitons(),
+      playlistSelected: PlaylistStore.getPlaylist()
     };
   }
 
@@ -36,7 +39,10 @@ export default class PlaylistsPage extends React.Component {
     ShowsStore.addChangeListener(this._onChange);
 
     if (!this.state.playlists.length) {
-      LemurTunesActions.requestPlaylists();
+      LemurTunesActions.requestPlaylists(true);
+      setTimeout(function () {
+        LemurTunesActions.requestPlaylists(false);
+      }, 500);
     }
     if (!this.state.shows.length) {
       LemurTunesActions.requestShows();
@@ -59,10 +65,19 @@ export default class PlaylistsPage extends React.Component {
   render() {
     //todo anonymously pass props
     let state = this.state;
+    let renderedPlaylists = [];
+
+    // limit playlists rendered if there is only one selected
+    if (state.playlistSelected > 0 && state.playlists.length) {
+      renderedPlaylists.push(state.playlists[state.playlistSelected - 1]);
+    } else {
+      renderedPlaylists = state.playlists;
+    }
 
     return (
       <div className='PlaylistsPage'>
-        <ol>{state.playlists.map(function (playlist) {
+        <WrappedDropdown className='Playlists' options={state.playlistOptions} handleChange={this.handlePlaylistChange.bind(this)} selectedIndex={state.playlistSelected} baseSize={1} />
+        <ol>{renderedPlaylists.map(function (playlist) {
           return <Playlist key={playlist.playlistId} location={state.location} playlist={playlist} shows={state.shows} />;
         })}
         </ol>
@@ -72,6 +87,11 @@ export default class PlaylistsPage extends React.Component {
 
   _onChange() {
     this.setState(this.getStateFromStores());
+  }
+
+  handlePlaylistChange(e, selectedIndex, menuItem) {
+    e.preventDefault();
+    LemurTunesActions.setPlaylist(menuItem.payload);
   }
 
 };

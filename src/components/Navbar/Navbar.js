@@ -29,7 +29,7 @@ export default class Navbar extends React.Component {
   componentDidMount() {
     UserStore.addChangeListener(this._onChange);
 
-    LemurTunesActions.requestLocationOptions();
+    //LemurTunesActions.requestLocationOptions();
   }
 
   componentWillUnmount() {

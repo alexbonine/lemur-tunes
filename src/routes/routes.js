@@ -13,10 +13,10 @@ import NotFoundPage from '../pages/NotFoundPage';
 export default (
   <Route name='home' path='/' handler={App}>
     <DefaultRoute handler={HomePage} />
-    <Route name='playlists' path='/playlists' handler={PlaylistsPage} />
-    <Route name='calendar' path='/calendar' handler={CalendarPage} />
-    <Route name='about' path='/about' handler={AboutPage} />
-    <Route name='admin' path='/admin' handler={AdminPage} />
+    <Route name='playlists' path='playlists' handler={PlaylistsPage} />
+    <Route name='calendar' path='calendar' handler={CalendarPage} />
+    <Route name='about' path='about' handler={AboutPage} />
+    <Route name='admin' path='admin' handler={AdminPage} />
     <NotFoundRoute handler={NotFoundPage} />
   </Route>
 );

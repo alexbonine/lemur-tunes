@@ -8,31 +8,43 @@ import assign from 'react/lib/Object.assign';
 
 const CHANGE_EVENT = 'change';
 
-// var playlists = [  //todo move to server
-//     { id: '1', name: 'It\'s No Fun Being On Time Mix', date: 'Dec 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:0EXqQxzHrrHx5mudsXkIMi' },
-//     { id: '2', name: 'PIce Skating Isn\'t For Pussies (It\'s For Canadians and Romantics)', date: 'Nov 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:3p9F2oWOqAsGMbLo2fENRo' },
-//     { id: '3', name: 'Where Have You Gone Patio Weather Mix', date: 'Oct 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:3BCqSLdHHtqOXKVIsIe6j0' },
-//     { id: '4', name: 'Sell By Date June Mix', date: 'Sept 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:5fcBYWrLKj6HTKNA6U9dIn' },
-//     { id: '5', name: 'Shake That Ring Tail Mix', date: 'May 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:0lBzfwFA25xgOU5gJ6RFLl' },
-//     { id: '6', name: 'Better 5 Days Late Than 18 Years Of A Roommate', date: 'Apr 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:535Zujkl6Vzl2J0s4p39gD' },
-//     { id: '7', name: 'One Month Injury-Free Mix', date: 'Mar 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:6fvXGiN7852KUoPpd2N1dJ' },
-//     { id: '8', name: 'Fuck February', date: 'Feb 2014', embedSrc: 'https://embed.spotify.com/?uri=spotify:user:122705250:playlist:26AMG3RrFr7gkUXSVKhapX' }
-//   ]
-
 // if (__SERVER__) {
 //   pages['/'] = {title: 'Home Page'};
 //   pages['/privacy'] = {title: 'Privacy Policy'};
 // }
 
 let playlists = [];
+let playlist = 1;
+let playlistOptions = [
+  { payload: 0, text: 'All' }
+];
+
 let setPlaylists = function (newPlaylists) {
   playlists = newPlaylists;
+}
+
+let setPlaylist = function (index) {
+  playlist = index;
+}
+
+let setPlaylistOptions = function (newOptions) {
+  for (var i = 0; i < newOptions.length; i++) {
+    playlistOptions.push({ payload: i+1, 'text': newOptions[i].name})
+  }
 }
 
 let PlaylistStore = assign({}, EventEmitter.prototype, {
 
   getPlaylists() {
     return playlists;
+  },
+
+  getPlaylist() {
+    return playlist;
+  },
+
+  getPlaylistOpitons() {
+    return playlistOptions;
   },
 
   /**
@@ -69,8 +81,14 @@ PlaylistStore.dispatcherToken = Dispatcher.register((payload) => {
 
   switch (action.actionType) {
 
+    case ActionTypes.CHANGE_PLAYLIST:
+      setPlaylist(action.index);
+      PlaylistStore.emitChange();
+      break;
+
     case ActionTypes.LEMURTUNES_PLAYLISTS_SUCCESS:
       setPlaylists(action.playlists);
+      setPlaylistOptions(action.playlists);
       PlaylistStore.emitChange();
       break;
 

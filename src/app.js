@@ -17,6 +17,7 @@ import router from './routes/router';
 // import Dispatcher from './core/Dispatcher';
 // import AppActions from './actions/AppActions';
 // import ActionTypes from './constants/ActionTypes';
+import FastClick from 'fastclick';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 module.exports = {
@@ -84,8 +85,6 @@ module.exports = {
 //     } else {
 //       window.attachEvent('onload', resolve);
 //     }
-//   }),
-//   new Promise((resolve) => {
-//     AppActions.loadPage(path, resolve);
-//   })
+//   }).then(() => FastClick.attach(document.body)),
+//   new Promise((resolve) => AppActions.loadPage(path, resolve))
 // ]).then(run);

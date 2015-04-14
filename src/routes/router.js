@@ -7,8 +7,8 @@ var React = require('react'),
 export default {
   router: null,
   renderToDom: function () {
-    var router = reactRouter.create({
-      location: reactRouter.HistoryLocation, // process.env.NODE_ENV === 'production' ? HashLocation : HistoryLocation,
+    var router = reactRouter.create({  //todo setup isomorphic serving of pushstate
+      location: reactRouter.HashLocation, // process.env.NODE_ENV === 'production' ? HashLocation : HistoryLocation,
       routes: routes
     });
 
