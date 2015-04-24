@@ -94,6 +94,21 @@ export default {
       results: error
     });
   },
+
+  handleDbStatsSuccess: function(response) {
+    Dispatcher.handleServerAction({
+      actionType: ActionTypes.LEMURTUNES_DATABASE_STATS_SUCCESS,
+      stats: response
+    });
+  },
+
+  handleDbStatsError: function(error) {
+    console.log('DB Stats error: ' + error);
+
+    Dispatcher.handleServerAction({
+      actionType: ActionTypes.LEMURTUNES_DATABASE_STATS_ERROR
+    });
+  }
  
   // handleCitiesSuccess: function(response) {  // for the post?
   //   Dispatcher.handleServerAction({

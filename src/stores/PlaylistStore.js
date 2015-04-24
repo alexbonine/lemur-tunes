@@ -15,9 +15,8 @@ const CHANGE_EVENT = 'change';
 
 let playlists = [];
 let playlist = 1;
-let playlistOptions = [
-  { payload: 0, text: 'All' }
-];
+let playlistOptions = [];
+let defaultPlaylistOptions = { payload: 0, text: 'All' };
 
 let setPlaylists = function (newPlaylists) {
   playlists = newPlaylists;
@@ -28,6 +27,7 @@ let setPlaylist = function (index) {
 }
 
 let setPlaylistOptions = function (newOptions) {
+  playlistOptions = [defaultPlaylistOptions];
   for (var i = 0; i < newOptions.length; i++) {
     playlistOptions.push({ payload: i+1, 'text': newOptions[i].name})
   }

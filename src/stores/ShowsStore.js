@@ -13,7 +13,8 @@ let shows = [];
 let showsLocation = 'Chicago';
 let calendarDateSelected = '30 Days';
 let calendarDateIndexSelected = 0;
-let dateOptions = [
+let dateOptions = [];
+let defaultDateOptions = [
   { payload: 0, text: '30 Days' },
   { payload: 1, text: 'All' }
 ];
@@ -36,6 +37,10 @@ let setCalendarDateIndexSelected = function (index) {
 
 let setDateOptions = function (shows) {
   if (shows.length) {
+    dateOptions = [];
+    for (let i = 0; i < defaultDateOptions.length; i++) {
+      dateOptions.push(defaultDateOptions[i]);
+    }
     let lastDate = moment(shows[shows.length - 1].eventDate);
     let months = lastDate.diff(moment(), 'months');
     for (let i = 0; i < months; i++) {

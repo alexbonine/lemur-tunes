@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react';
+import React, {Component} from 'react';
 import LemurTunesActions from '../../actions/LemurTunesActions';
 import { DropDownMenu } from 'material-ui';
 import './WrappedDropdown.less'
@@ -9,7 +9,7 @@ import './WrappedDropdown.less'
  * https://github.com/callemall/material-ui/issues/203
  */
 
-export default class WrappedDropdown extends React.Component {
+export default class WrappedDropdown extends Component {
   render() {
     let baseSize = this.props.baseSize || 0;
     return this.props.options.length > baseSize ?

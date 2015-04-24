@@ -3,14 +3,15 @@
 import APIUtils from './APIUtils';
 import LemurTunesAPIActions from '../actions/LemurTunesAPIActions';
 
-const base = 'http://localhost:10888/api/';//'http://music.alexbonine.com/api/';
+const base = 'http://music.alexbonine.com/api/';
 const urls = {
   playlists: base + 'playlists',
   cities: base + 'cities',
   shows: base + 'shows',
   updateShowsDb: base + 'updateshowsdb',
   verifysongkick: base + 'verifysongkick',
-  importalldata: base + 'importalldata'
+  importalldata: base + 'importalldata',
+  dbStats: base + 'dbstats'
 };
 
 export default {
@@ -100,6 +101,17 @@ export default {
           LemurTunesAPIActions.handleAdminError(err.message);
         } else {
           LemurTunesAPIActions.handleAdminSuccess(JSON.parse(res.text));
+        }
+      });
+  },
+  requestDbStats: function () {
+    APIUtils.get(urls.dbStats,
+      {},
+      function (err, res) {
+        if (!res || !res.ok) {
+          LemurTunesAPIActions.handleDbStatsError(err.message);
+        } else {
+          LemurTunesAPIActions.handleDbStatsSuccess(JSON.parse(res.text));
         }
       });
   }

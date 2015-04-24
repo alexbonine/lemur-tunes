@@ -101,10 +101,18 @@ export default {
 
   updateShowsDb: function () {
     Dispatcher.handleViewAction({
-      actionType: ActionTypes.UPDATE_SHOWS_DB_GET,
+      actionType: ActionTypes.UPDATE_SHOWS_DB_GET
     });
 
     LemurTunesAPI.updateShowsDb();
+  },
+
+  requestDbStats: function () {
+    Dispatcher.handleViewAction({
+      actionType: ActionTypes.DB_STATS_GET
+    });
+
+    LemurTunesAPI.requestDbStats();
   }
 
   // setShows: function () {  //agb server or view?

@@ -1,12 +1,15 @@
 'use strict';
 
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-//todo switch to moment
+import moment from 'moment';
+
 export default {
   toDateString: function (date) {
-    return  months[date.getMonth()] + ' ' + date.getFullYear();
+    return  moment(date).format('MMM YYYY');
   },
   toDateNumString: function (date) {
-    return  (date.getMonth() + 1) + '/' + (date.getDate() + 1);
+    return  moment(date).format('M/D');
+  },
+  toMonthDayString: function (date) {
+    return moment(date).format('MMMM Do')
   }
 };
