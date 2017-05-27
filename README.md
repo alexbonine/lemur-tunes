@@ -13,3 +13,15 @@ npm install issues with:
 vendor - node_modules/psi/node_modules/googleapis/node_modules/request/ - tough-cookie
   - node_modules/browser-sync/node_modules/socket.io/node-modules/socket.io-adapter - object-keys
 styles - node_modules/gulp-less/node_modules/accord/node_modules/glob/node_modules/minimatch - brace-expansion
+
+
+Removed pacakges:
+webpack-dev-middleware
+webpack-hot-middleware
+postcss-scss
+postcss-js
+react-css-modules
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500,300);
+font-family: 'Roboto', sans-serif;
+
