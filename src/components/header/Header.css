@@ -1,0 +1,33 @@
+ul.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+}
+
+.header li {
+  list-style: none;
+  margin: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.header li a {
+  padding: 10px 40px;
+  font-size: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.header li a:hover {
+  color: green;
+}
+
+.header .active {
+  background: purple;
+  color: white;
+}
+
+.header .active:hover {
+  background: green;
+  color: white;
+}
