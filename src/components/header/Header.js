@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 
-class App extends Component {
+class Header extends Component {
   render() {
+    const style = this.props.style || {};
+
     return (
-      <ul className="header">
+      <ul className="header" style={style}>
         <li>
           <NavLink exact to="/">
             Home
@@ -22,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Header;

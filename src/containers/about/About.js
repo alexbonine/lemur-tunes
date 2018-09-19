@@ -5,8 +5,10 @@ import './About.css';
 
 class About extends Component {
   render() {
+    const style = this.props.style || {};
+
     return (
-      <div className="about-container">
+      <div className="about-container" style={style}>
         <header className="app-header">
           <img src={logo} className="app-logo" alt="logo" />
           <h1 className="app-title">Welcome to Lemur Tunes</h1>
